@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
+#from matplotlib.backend_kivyagg import FigureCanvasKivyAgg
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib

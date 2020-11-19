@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9b84b48215b37413c2a5424033db00568f48fc4ebd968ef43e62188787bf59db"
+            "sha256": "cf04baf4b88cec1c9f09030db01f657d54b1274a8f44f8785a072241735b9519"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -82,14 +82,6 @@
             ],
             "index": "pypi",
             "version": "==0.1.4"
-        },
-        "kivy-garden.graph": {
-            "hashes": [
-                "sha256:30cd05e6de5fb85e68a2e2d2215ae2a7989bf03a5dc45d45256a78a3cbed44eb",
-                "sha256:4150f454b91dc025c37e69f81d7c1cb521e9164bd8e7db44b1855bf3d715264c"
-            ],
-            "index": "pypi",
-            "version": "==0.4.0"
         },
         "kiwisolver": {
             "hashes": [
