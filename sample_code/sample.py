@@ -6,6 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 
+import random
+
 matplotlib.use('module://kivy.garden.matplotlib.backend_kivy')
 
 class GraphApp(App):
