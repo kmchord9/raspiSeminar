@@ -12,6 +12,12 @@ from getTemp.temp import getTemp
 import matplotlib.pyplot as plt
 import datetime
 import random
+from getTemp.saveCSV import saveCSV
+
+#設定値
+SAVE_CYCLE_TIME = 20
+SAVE_PATH = "./datalog/"
+
 
 kv_def = '''
 <RootWidget>:
@@ -49,18 +55,18 @@ class GraphView(BoxLayout):
         widget = FigureCanvasKivyAgg(self.fig)
         self.add_widget(widget)
 
-        Clock.schedule_interval(self.update_view, 1)
+        Clock.schedule_interval(self.update_view, SAVE_CYCLE_TIME)
 
     def update_view(self, *args, **kwargs):
 
         self.dt_now = datetime.datetime.now()
-        #self.xVal = np.append(self.xVal, self.xVal[-1] + datetime.timedelta(seconds=1))
-        self.xVal = np.append(self.xVal, self.dt_now)
-        self.yVal = np.append(self.yVal, getTemp())
-        #self.xVal = np.array([ self.dt_now + datetime.timedelta(seconds=t) for t in range(6) ])
+        self.tm_now = getTemp()
 
-        #self.xVal.append(self.xVal[-1] + datetime.timedelta(seconds=1))
-        #self.yVal.append(randomTemp())
+        self.xVal = np.append(self.xVal, self.dt_now)
+        self.yVal = np.append(self.yVal, self.tm_now)
+
+        saveCSV(self.dt_now, self.tm_now, save_path=SAVE_PATH)
+
 
         # Line にデータを設定する
         self.line.set_data(self.xVal, self.yVal)

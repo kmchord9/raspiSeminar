@@ -146,3 +146,10 @@ dmypy.json
 
 #libs
 libs
+
+datalog
+
+#empty directory
+!.gitkeep
+
+
