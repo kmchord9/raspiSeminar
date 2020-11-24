@@ -19,8 +19,9 @@ python3 -m pip install --user https://codeload.github.com/kivy/kivy/zip/1.11.1
 
 ```
 ### 他依存ライブラリインストール
+```
 pip install numpy matplotlib
-
+```
 ### データのクローン
 ```
 git clone https://github.com/kmchord9/raspiSeminar.git
