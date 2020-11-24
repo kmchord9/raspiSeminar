@@ -18,6 +18,8 @@ python3 -m pip install --upgrade --user Cython==0.29.9 pillow && \
 python3 -m pip install --user https://codeload.github.com/kivy/kivy/zip/1.11.1
 
 ```
+### 他依存ライブラリインストール
+pip install numpy matplotlib
 
 ### データのクローン
 ```
