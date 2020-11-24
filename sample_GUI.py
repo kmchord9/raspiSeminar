@@ -53,8 +53,11 @@ class GraphView(BoxLayout):
 
     def update_view(self, *args, **kwargs):
 
-        self.xVal = np.append(self.xVal, self.xVal[-1] + datetime.timedelta(seconds=1))
+        self.dt_now = datetime.datetime.now()
+        #self.xVal = np.append(self.xVal, self.xVal[-1] + datetime.timedelta(seconds=1))
+        self.xVal = np.append(self.xVal, self.dt_now)
         self.yVal = np.append(self.yVal, getTemp())
+        #self.xVal = np.array([ self.dt_now + datetime.timedelta(seconds=t) for t in range(6) ])
 
         #self.xVal.append(self.xVal[-1] + datetime.timedelta(seconds=1))
         #self.yVal.append(randomTemp())
