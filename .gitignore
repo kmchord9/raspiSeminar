@@ -147,7 +147,7 @@ dmypy.json
 #libs
 libs
 
-datalog
+datalog/*
 
 #empty directory
 !.gitkeep
