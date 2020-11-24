@@ -8,6 +8,7 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
 import numpy as np
+from getTemp.temp import getTemp
 import matplotlib.pyplot as plt
 import datetime
 import random
