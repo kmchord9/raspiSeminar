@@ -36,9 +36,11 @@ class GraphView(BoxLayout):
     def __init__(self, *args, **kwargs):
 
         self.dt_now = datetime.datetime.now()
-        self.xVal = np.array([ self.dt_now + datetime.timedelta(seconds=t) for t in range(6) ])
-        self.yVal = np.array([randomTemp() for i in range(6)])  
+        #self.xVal = np.array([ self.dt_now + datetime.timedelta(seconds=t) for t in range(6) ])
+        #self.yVal = np.array([randomTemp() for i in range(6)])  
          
+        self.xVal = np.array([ self.dt_now ])
+        self.yVal = np.array([randomTemp()])  
         super().__init__(*args, **kwargs)
 
         self.fig, self.ax = plt.subplots()
@@ -52,7 +54,7 @@ class GraphView(BoxLayout):
     def update_view(self, *args, **kwargs):
 
         self.xVal = np.append(self.xVal, self.xVal[-1] + datetime.timedelta(seconds=1))
-        self.yVal = np.append(self.yVal, randomTemp())
+        self.yVal = np.append(self.yVal, getTemp())
 
         #self.xVal.append(self.xVal[-1] + datetime.timedelta(seconds=1))
         #self.yVal.append(randomTemp())
