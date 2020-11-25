@@ -8,16 +8,16 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
 import numpy as np
-from getTemp.temp import getTemp
 import matplotlib.pyplot as plt
 import datetime
 import random
-from getTemp.saveCSV import saveCSV
+from module.csvModule import fileExistCheckAndSaveCsv
+from module.sensor import getADT7410SensorData
 
 #設定値
 SAVE_CYCLE_TIME = 20
 SAVE_PATH = "./datalog/"
-
+MAX_SHOW_ELEMENT_N = 540
 
 kv_def = '''
 <RootWidget>:
@@ -60,12 +60,26 @@ class GraphView(BoxLayout):
     def update_view(self, *args, **kwargs):
 
         self.dt_now = datetime.datetime.now()
-        self.tm_now = getTemp()
+        self.tm_now = getADT7410SensorData()
 
-        self.xVal = np.append(self.xVal, self.dt_now)
-        self.yVal = np.append(self.yVal, self.tm_now)
+        if self.xVal.size > MAX_SHOW_ELEMENT_N: 
+            self.xVal = np.roll(self.xVal, -1)
+            self.yVal = np.roll(self.yVal, -1)
 
-        saveCSV(self.dt_now, self.tm_now, save_path=SAVE_PATH)
+            self.xVal[-1] = self.dt_now
+            self.yVal[-1] = self.tm_now
+
+        else:
+
+            self.xVal = np.append(self.xVal, self.dt_now)
+            self.yVal = np.append(self.yVal, self.tm_now)
+
+        #今日の日付のCSVファイルの存在を確認してデータ保存
+        if not fileExistCheckAndSaveCsv(self.dt_now, self.tm_now):
+            self.xVal = np.array([]) #日付が更新されたら表示される要素を初期化
+            self,yVal = np.array([])    
+
+        #saveCSV(self.dt_now, self.tm_now, save_path=SAVE_PATH)
 
 
         # Line にデータを設定する
