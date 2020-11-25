@@ -77,7 +77,7 @@ class GraphView(BoxLayout):
         #今日の日付のCSVファイルの存在を確認してデータ保存
         if not fileExistCheckAndSaveCsv(self.dt_now, self.tm_now):
             self.xVal = np.array([]) #日付が更新されたら表示される要素を初期化
-            self,yVal = np.array([])    
+            self.yVal = np.array([])    
 
         #saveCSV(self.dt_now, self.tm_now, save_path=SAVE_PATH)
 
